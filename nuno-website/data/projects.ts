@@ -1,0 +1,118 @@
+import type { Project } from "@/types";
+
+/**
+ * PORTAFOLIO — demos conceptuales con datos ilustrativos.
+ * Para agregar un proyecto: copia un objeto, cambia `slug` y sus módulos.
+ * Cada módulo define KPIs, gráfico (7 días / 6 meses) y una tabla con estados.
+ * Ninguno de estos datos corresponde a clientes o resultados reales.
+ */
+export const projects: Project[] = [
+  {
+    slug: "retailflow",
+    name: "RetailFlow",
+    category: "Inventario y ventas",
+    description: "Sistema de gestión de inventario y ventas para comercios con múltiples productos y proveedores.",
+    features: ["Inventario", "Productos y categorías", "Ventas", "Proveedores", "Alertas de stock", "Reportes"],
+    accent: "blue",
+    modules: [
+      { id: "inventario", label: "Inventario", kpis: [{ label: "Productos activos", value: "1.248" }, { label: "Bajo stock", value: "17", delta: "alerta" }, { label: "Categorías", value: "32" }],
+        chartTitle: "Unidades vendidas", d7: [42, 55, 38, 61, 74, 90, 66], m6: [310, 280, 355, 402, 389, 440],
+        columns: ["SKU", "Producto", "Stock", "Estado"], statusCol: 3, statuses: ["Disponible", "Bajo stock", "Agotado"],
+        rows: [["RF-001", "Camiseta básica M", "120", "Disponible"], ["RF-014", "Jeans clásico 32", "8", "Bajo stock"], ["RF-027", "Zapatilla urbana 40", "0", "Agotado"], ["RF-033", "Gorra lisa negra", "54", "Disponible"], ["RF-048", "Chaqueta ligera L", "6", "Bajo stock"]] },
+      { id: "ventas", label: "Ventas", kpis: [{ label: "Ventas del día", value: "$1.840", delta: "+6%" }, { label: "Ticket promedio", value: "$46" }, { label: "Facturas", value: "40" }],
+        chartTitle: "Ventas (USD)", d7: [1200, 1480, 1100, 1650, 1980, 2400, 1840], m6: [28, 31, 29, 36, 38, 42].map((n) => n * 1000),
+        columns: ["Factura", "Cliente", "Total", "Estado"], statusCol: 3, statuses: ["Pagada", "Pendiente", "Anulada"],
+        rows: [["F-1021", "Cliente mostrador", "$58", "Pagada"], ["F-1022", "Distribuciones Sol", "$420", "Pendiente"], ["F-1023", "Cliente mostrador", "$31", "Pagada"], ["F-1024", "Boutique Aurora", "$265", "Pendiente"], ["F-1025", "Cliente mostrador", "$74", "Anulada"]] },
+    ],
+  },
+  {
+    slug: "autogest",
+    name: "AutoGest",
+    category: "Talleres automotrices",
+    description: "Software de administración para talleres: clientes, vehículos, órdenes de servicio y repuestos.",
+    features: ["Clientes", "Vehículos", "Órdenes de servicio", "Técnicos", "Repuestos", "Estado de reparaciones", "Historial"],
+    accent: "deep",
+    modules: [
+      { id: "ordenes", label: "Órdenes", kpis: [{ label: "Órdenes abiertas", value: "14" }, { label: "Listas para entrega", value: "5" }, { label: "Técnicos activos", value: "6" }],
+        chartTitle: "Órdenes cerradas", d7: [4, 6, 5, 7, 8, 3, 0], m6: [62, 58, 71, 69, 80, 84],
+        columns: ["Orden", "Vehículo", "Técnico", "Estado"], statusCol: 3, statuses: ["En diagnóstico", "En reparación", "Lista"],
+        rows: [["OS-310", "Mazda 3 · ABC123", "L. Mora", "En diagnóstico"], ["OS-311", "Renault Duster", "J. Pardo", "En reparación"], ["OS-312", "Kia Picanto", "L. Mora", "Lista"], ["OS-313", "Chevrolet Spark", "A. Ruiz", "En reparación"], ["OS-314", "Toyota Hilux", "J. Pardo", "En diagnóstico"]] },
+      { id: "repuestos", label: "Repuestos", kpis: [{ label: "Referencias", value: "386" }, { label: "Por pedir", value: "9", delta: "alerta" }, { label: "Proveedores", value: "11" }],
+        chartTitle: "Repuestos usados", d7: [12, 18, 15, 22, 25, 9, 0], m6: [140, 132, 160, 171, 158, 190],
+        columns: ["Código", "Repuesto", "Existencias", "Estado"], statusCol: 3, statuses: ["En stock", "Por pedir", "Pedido"],
+        rows: [["RP-100", "Filtro de aceite", "34", "En stock"], ["RP-118", "Pastillas de freno", "4", "Por pedir"], ["RP-121", "Correa de distribución", "2", "Pedido"], ["RP-140", "Bujía estándar", "60", "En stock"], ["RP-152", "Amortiguador delantero", "3", "Por pedir"]] },
+    ],
+  },
+  {
+    slug: "clinicpro",
+    name: "ClinicPro",
+    category: "Gestión de clínicas",
+    description: "Sistema administrativo conceptual para clínicas: agenda, pacientes, profesionales y seguimiento de citas.",
+    features: ["Agenda", "Pacientes", "Profesionales", "Citas", "Seguimiento", "Panel de administración"],
+    accent: "coral",
+    modules: [
+      { id: "agenda", label: "Agenda", kpis: [{ label: "Citas de hoy", value: "28" }, { label: "Confirmadas", value: "21" }, { label: "Profesionales", value: "7" }],
+        chartTitle: "Citas por día", d7: [24, 28, 26, 30, 27, 12, 0], m6: [480, 510, 495, 540, 560, 575],
+        columns: ["Hora", "Paciente", "Profesional", "Estado"], statusCol: 3, statuses: ["Pendiente", "Confirmada", "Atendida"],
+        rows: [["08:00", "Paciente 0142", "Dra. Ríos", "Atendida"], ["08:30", "Paciente 0208", "Dr. Salas", "Confirmada"], ["09:00", "Paciente 0077", "Dra. Ríos", "Confirmada"], ["09:30", "Paciente 0315", "Dr. Vega", "Pendiente"], ["10:00", "Paciente 0190", "Dr. Salas", "Pendiente"]] },
+      { id: "pacientes", label: "Pacientes", kpis: [{ label: "Pacientes registrados", value: "2.310" }, { label: "Nuevos del mes", value: "86" }, { label: "Seguimientos", value: "42" }],
+        chartTitle: "Nuevos pacientes", d7: [9, 12, 8, 14, 11, 5, 0], m6: [70, 64, 82, 79, 90, 86],
+        columns: ["ID", "Paciente", "Último control", "Seguimiento"], statusCol: 3, statuses: ["Al día", "Por agendar", "Vencido"],
+        rows: [["0142", "Paciente 0142", "12 sep", "Al día"], ["0208", "Paciente 0208", "03 ago", "Por agendar"], ["0077", "Paciente 0077", "21 may", "Vencido"], ["0315", "Paciente 0315", "28 sep", "Al día"], ["0190", "Paciente 0190", "15 jul", "Por agendar"]] },
+    ],
+  },
+  {
+    slug: "constructcontrol",
+    name: "ConstructControl",
+    category: "Gestión de obras",
+    description: "Plataforma para controlar proyectos de construcción: materiales, presupuestos, personal y avances.",
+    features: ["Proyectos", "Materiales", "Presupuestos", "Personal", "Avances", "Gastos"],
+    accent: "blue",
+    modules: [
+      { id: "proyectos", label: "Proyectos", kpis: [{ label: "Obras activas", value: "4" }, { label: "Avance promedio", value: "63%" }, { label: "Personal en sitio", value: "58" }],
+        chartTitle: "Avance (%)", d7: [52, 54, 55, 57, 59, 61, 63], m6: [20, 31, 42, 50, 58, 63],
+        columns: ["Obra", "Responsable", "Avance", "Estado"], statusCol: 3, statuses: ["En plazo", "En riesgo", "Retrasada"],
+        rows: [["Torre Norte", "Ing. Castro", "72%", "En plazo"], ["Bodega Industrial", "Ing. Lara", "48%", "En riesgo"], ["Conjunto Los Pinos", "Arq. Duarte", "81%", "En plazo"], ["Reforma Sede Central", "Ing. Lara", "35%", "Retrasada"]] },
+      { id: "presupuesto", label: "Presupuesto", kpis: [{ label: "Presupuesto total", value: "$1,2 M" }, { label: "Ejecutado", value: "58%" }, { label: "Desviación", value: "+2,1%", delta: "alerta" }],
+        chartTitle: "Gasto mensual (miles USD)", d7: [18, 22, 15, 26, 30, 12, 0], m6: [120, 148, 160, 172, 190, 205],
+        columns: ["Partida", "Obra", "Monto", "Estado"], statusCol: 3, statuses: ["Aprobado", "En revisión", "Excedido"],
+        rows: [["Cemento y acero", "Torre Norte", "$84.000", "Aprobado"], ["Mano de obra", "Bodega Industrial", "$52.500", "En revisión"], ["Acabados", "Los Pinos", "$37.200", "Aprobado"], ["Maquinaria", "Reforma Sede", "$29.800", "Excedido"]] },
+    ],
+  },
+  {
+    slug: "gastromanager",
+    name: "GastroManager",
+    category: "Restaurantes",
+    description: "Sistema de gestión para restaurantes: pedidos, menú, inventario, reservas y panel de operación.",
+    features: ["Pedidos", "Menú", "Inventario", "Reservas", "Ventas", "Panel de operación"],
+    accent: "coral",
+    modules: [
+      { id: "pedidos", label: "Pedidos", kpis: [{ label: "Pedidos activos", value: "12" }, { label: "Tiempo promedio", value: "17 min" }, { label: "Mesas ocupadas", value: "9/14" }],
+        chartTitle: "Pedidos por día", d7: [86, 92, 88, 104, 150, 210, 180], m6: [2100, 2250, 2190, 2480, 2600, 2710],
+        columns: ["Pedido", "Mesa", "Detalle", "Estado"], statusCol: 3, statuses: ["En cocina", "Listo", "Entregado"],
+        rows: [["#481", "Mesa 3", "2 pastas, 1 ensalada", "En cocina"], ["#482", "Mesa 7", "Parrilla mixta", "En cocina"], ["#483", "Mesa 1", "3 bebidas", "Listo"], ["#484", "Domicilio", "2 hamburguesas", "Entregado"], ["#485", "Mesa 5", "Menú del día x2", "En cocina"]] },
+      { id: "reservas", label: "Reservas", kpis: [{ label: "Reservas hoy", value: "18" }, { label: "Personas", value: "64" }, { label: "Cupos libres", value: "6" }],
+        chartTitle: "Reservas por día", d7: [10, 12, 11, 16, 28, 40, 34], m6: [240, 260, 255, 300, 315, 330],
+        columns: ["Hora", "A nombre de", "Personas", "Estado"], statusCol: 3, statuses: ["Pendiente", "Confirmada", "Cancelada"],
+        rows: [["19:00", "Reserva Gómez", "4", "Confirmada"], ["19:30", "Reserva Torres", "2", "Pendiente"], ["20:00", "Reserva Medina", "6", "Confirmada"], ["20:30", "Reserva Prieto", "3", "Cancelada"], ["21:00", "Reserva Núñez", "2", "Pendiente"]] },
+    ],
+  },
+  {
+    slug: "insightbi",
+    name: "InsightBI",
+    category: "Analítica empresarial",
+    description: "Dashboard de analítica para seguir indicadores, tendencias y reportes de la operación en un solo panel.",
+    features: ["KPIs", "Gráficos", "Reportes", "Tendencias", "Indicadores", "Análisis de datos"],
+    accent: "deep",
+    modules: [
+      { id: "kpis", label: "Indicadores", kpis: [{ label: "Ingresos del mes", value: "$128K", delta: "+4,2%" }, { label: "Clientes activos", value: "412" }, { label: "Cumplimiento meta", value: "91%" }],
+        chartTitle: "Ingresos (miles USD)", d7: [4.1, 4.6, 3.9, 5.2, 5.8, 3.1, 1.9], m6: [96, 101, 108, 115, 121, 128],
+        columns: ["Indicador", "Área", "Meta", "Estado"], statusCol: 3, statuses: ["Cumplido", "En seguimiento", "Bajo meta"],
+        rows: [["Ventas netas", "Comercial", "$125K", "Cumplido"], ["Margen bruto", "Finanzas", "38%", "En seguimiento"], ["Tiempo de entrega", "Operaciones", "48 h", "Bajo meta"], ["Satisfacción", "Servicio", "4,5/5", "Cumplido"]] },
+      { id: "reportes", label: "Reportes", kpis: [{ label: "Reportes programados", value: "23" }, { label: "Enviados esta semana", value: "11" }, { label: "Fuentes conectadas", value: "5" }],
+        chartTitle: "Reportes generados", d7: [3, 4, 2, 5, 6, 1, 0], m6: [38, 44, 41, 52, 58, 61],
+        columns: ["Reporte", "Frecuencia", "Responsable", "Estado"], statusCol: 3, statuses: ["Programado", "Enviado", "Con error"],
+        rows: [["Ventas por región", "Semanal", "Comercial", "Enviado"], ["Flujo de caja", "Mensual", "Finanzas", "Programado"], ["Inventario crítico", "Diario", "Operaciones", "Enviado"], ["Cartera vencida", "Semanal", "Finanzas", "Con error"]] },
+    ],
+  },
+];
